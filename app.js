@@ -5,6 +5,8 @@ const session = require('express-session');
 const passport = require('passport');
 const OAuth2Strategy = require('passport-oauth2').Strategy;
 
+// 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
+
 const app = express();
 
 const indexRouter = require('./routes/index');
