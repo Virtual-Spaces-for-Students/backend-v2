@@ -1,9 +1,10 @@
+const fs = require("fs");
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
-const OAuth2Strategy = require('passport-oauth2').Strategy;
+const SamlStrategy = require("passport-saml").Strategy;
 
 // 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
 
@@ -34,6 +35,28 @@ passport.use(new OAuth2Strategy({
 		cb(null, profile);
 	}
 ));
+
+passport.use(
+	new SamlStrategy(
+		{
+			entryPoint: "https://adfs.vss.local/adfs/ls",
+			issuer: "http://172.18.8.2:8080",
+			callbackUrl: "http://172.18.8.2:8080/auth/callback",
+			privateKey: fs.readFileSync("certs/adfs.key", "utf-8"),
+			cert: fs.readFileSync("certs/adfs.cert", "utf-8"),
+			acceptedClockSkewMs: -1,
+			identifierFormat: null,
+			signatureAlgorithm: "sha256",
+			racComparison: "exact",
+		},
+		(profile, done) => {
+			console.log(profile);
+			return done(null, {
+				upn: profile["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"],
+			});
+		}
+	)
+);
 
 
 
