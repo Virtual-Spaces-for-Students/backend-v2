@@ -29,12 +29,11 @@ passport.use(
 			callbackUrl: "https://app.vss.local:8080/auth/callback",
 			//privateKey: fs.readFileSync("certs/adfs.key", "utf-8"),
 			cert: fs.readFileSync("certs/adfs.cert", "utf-8"),
-			identifierFormat: null,
 		},
 		(profile, done) => {
 			console.log(profile);
 			return done(null, {
-				upn: profile["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"],
+				upn: profile,
 			});
 		}
 	)
