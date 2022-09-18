@@ -1,3 +1,9 @@
+Bag Attributes
+    localKeyID: 01 00 00 00
+subject=DC = local, DC = vss, CN = VSS-CA
+
+issuer=DC = local, DC = vss, CN = VSS-CA
+
 -----BEGIN CERTIFICATE-----
 MIIDVTCCAj2gAwIBAgIQZ4EP30swvY9KD4Zyd1dYlzANBgkqhkiG9w0BAQsFADA9
 MRUwEwYKCZImiZPyLGQBGRYFbG9jYWwxEzARBgoJkiaJk/IsZAEZFgN2c3MxDzAN
