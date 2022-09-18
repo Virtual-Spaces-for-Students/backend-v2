@@ -5,7 +5,7 @@ const router = express.Router();
 /* GET users listing. */
 router.get('/login', passport.authenticate('saml'));
 
-router.get('/callback',
+router.post('/callback',
 	passport.authenticate('saml', { failureRedirect: '/auth/login' }),
 	function(req, res) {
 		// Successful authentication, redirect home.
