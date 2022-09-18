@@ -25,8 +25,8 @@ passport.use(
 	new SamlStrategy(
 		{
 			entryPoint: "https://adfs.vss.local/adfs/ls",
-			issuer: "http://172.18.8.2:8080",
-			callbackUrl: "http://172.18.8.2:8080/auth/callback",
+			issuer: "https://app.vss.local:8080",
+			callbackUrl: "https://app.vss.local:8080/auth/callback",
 			privateKey: fs.readFileSync("certs/adfs.key", "utf-8"),
 			cert: fs.readFileSync("certs/adfs.cert", "utf-8"),
 			acceptedClockSkewMs: -1,

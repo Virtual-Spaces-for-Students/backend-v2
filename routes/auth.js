@@ -12,4 +12,14 @@ router.get('/callback',
 		res.json(req.user)
 	}
 );
+
+router.get('/logout', async (req, res) => {
+	if (req.isAuthenticated()) {
+		req.logout();
+		res.sendStatus(204)
+	} else {
+		res.sendStatus(401);
+	}
+});
+
 module.exports = router;
