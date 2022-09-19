@@ -32,6 +32,7 @@ passport.use(
 			decryptionPvk: fs.readFileSync("certs/adfs.key", "utf-8"),
 			identifierFormat: null,
 			signatureAlgorithm: 'sha256',
+			digestAlgorithm: 'sha256',
 		},
 		(profile, done) => {
 			console.log(profile);
