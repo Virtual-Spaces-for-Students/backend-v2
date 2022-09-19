@@ -22,7 +22,7 @@ app.set('port', port);
 
 var server = https.createServer({
   key: fs.readFileSync("certs/adfs.key", "utf-8"),
-  cert: fs.readFileSync("certs/adfs.cert", "utf-8"),
+  cert: fs.readFileSync("certs/adfs.cer", "utf-8"),
 }, app);
 
 /**
