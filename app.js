@@ -27,7 +27,7 @@ passport.use(
 			entryPoint: "https://adfs.vss.local/adfs/ls",
 			issuer: "https://app.vss.local:8080",
 			callbackUrl: "https://app.vss.local:8080/auth/callback",
-			privateKey: fs.readFileSync("certs/adfs.key", "utf-8"),
+			//privateKey: fs.readFileSync("certs/adfs.key", "utf-8"),
 			cert: fs.readFileSync("certs/adfs.cer", "utf-8"),
 			identifierFormat: null,
 			signatureAlgorithm: 'sha256',
