@@ -30,6 +30,7 @@ passport.use(
 			privateKey: fs.readFileSync("certs/adfs.key", "utf-8"),
 			cert: fs.readFileSync("certs/adfs.cer", "utf-8"),
 			identifierFormat: null,
+			signatureAlgorithm: 'sha256',
 		},
 		(profile, done) => {
 			console.log(profile);
