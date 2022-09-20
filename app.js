@@ -43,12 +43,7 @@ passport.use(
 			signatureAlgorithm: 'sha256',
 		},
 		(profile, done) => {
-			const upn = profile["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"];
-
-			console.log(upn);
-			console.log(profile);
-
-			return done(null, upn );
+			return done(null, profile);
 		}
 	)
 );
