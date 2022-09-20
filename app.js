@@ -14,7 +14,7 @@ const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 
 app.use(session({
-	secret: 'keyboard cat',
+	secret: 'lesSécuRitéEstIncroyablementForte65',
 	resave: false,
 	saveUninitialized: false,
 	cookie: { secure: true }
@@ -33,10 +33,13 @@ passport.use(
 			signatureAlgorithm: 'sha256',
 		},
 		(profile, done) => {
-			console.log(profile);
-			return done(null, {
-				upn: profile,
-			});
+			const upn = profile["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"];
+			const windowsAccountName = profile["http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"];
+
+			console.log(upn);
+			console.log(windowsAccountName);
+
+			return done(null, { upn, windowsAccountName });
 		}
 	)
 );
