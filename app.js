@@ -34,12 +34,11 @@ passport.use(
 		},
 		(profile, done) => {
 			const upn = profile["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"];
-			const windowsAccountName = profile["http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"];
 
 			console.log(upn);
-			console.log(windowsAccountName);
+			console.log(profile);
 
-			return done(null, { upn, windowsAccountName });
+			return done(null, upn );
 		}
 	)
 );
