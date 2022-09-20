@@ -6,7 +6,8 @@ const router = express.Router();
 router.get('/login', passport.authenticate('saml'));
 
 router.post('/callback', passport.authenticate('saml', { failureRedirect: '/auth/login' }), (req, res) => {
-	res.json({ sessionID: req.sessionID, user: req.user });
+	res.redirect(`https://app.vss.local/dashboard?token=${req.sessionID}`);
+	//res.json({ sessionID: req.sessionID, user: req.user });
 });
 
 
