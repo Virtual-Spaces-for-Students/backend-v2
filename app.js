@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
+const bodyParser = require('body-parser');
 const SamlStrategy = require("passport-saml").Strategy;
 
 // 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
@@ -19,7 +20,16 @@ app.use(session({
 	saveUninitialized: false,
 	cookie: { secure: true }
 }));
+app.use(passport.initialize());
 app.use(passport.session());
+
+passport.serializeUser(function (user, done) {
+	done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+	done(null, user);
+});
 
 passport.use(
 	new SamlStrategy(
@@ -47,8 +57,8 @@ passport.use(
 
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
 app.use('/', indexRouter);
